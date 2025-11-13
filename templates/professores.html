@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Professores</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/turmas">📚 Minhas Turmas</a></li>
+            <li><a href="/professores">👨‍🏫 Professores</a></li>
+            <li><a href="/logout">🚪 Sair</a></li>
+        </ul>
+    </aside>
+
+    <main>
+
+        <h1>Professores</h1>
+
+        <form class="card" action="/professores/criar" method="POST">
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <button class="btn-primary">Cadastrar</button>
+        </form>
+
+        <table class="data-table">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+
+            {% for p in professores %}
+            <tr>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.email }}</td>
+                <td>{{ p.tipo }}</td>
+                <td>
+
+                    {% if p.tipo != 'admin' %}
+                    <a href="/professores/editar/{{ p.id }}">✏ Editar</a>
+                    <a href="/professores/excluir/{{ p.id }}">🗑 Excluir</a>
+                    {% else %}
+                    —
+                    {% endif %}
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

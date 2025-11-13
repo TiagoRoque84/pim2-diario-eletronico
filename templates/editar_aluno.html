@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Editar Aluno</title>
+</head>
+<body>
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/turmas/{{ aluno.turma_id }}/alunos">← Voltar</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Editar Aluno</h1>
+
+        <form class="card" method="POST">
+            <input name="nome" value="{{ aluno.nome }}" required>
+            <input name="ra" value="{{ aluno.ra }}" required>
+            <input name="email" value="{{ aluno.email }}">
+            <button class="btn-primary">Salvar</button>
+        </form>
+
+    </main>
+</div>
+</body>
+</html>

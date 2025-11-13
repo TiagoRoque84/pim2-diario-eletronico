@@ -1,0 +1,208 @@
+/* ======================================== */
+/* ESTILOS GERAIS DO SISTEMA                */
+/* ======================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f1f1;
+}
+
+/* Layout principal */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ======================================== */
+/* SIDEBAR                                  */
+/* ======================================== */
+
+.sidebar {
+    width: 240px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 12px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display: block;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* ======================================== */
+/* CONTEÚDO PRINCIPAL                        */
+/* ======================================== */
+
+main {
+    padding: 30px;
+    width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.15);
+    margin-bottom: 25px;
+}
+
+/* Botões */
+.btn-primary {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #1e8449;
+}
+
+/* Botões secundários */
+.btn-action {
+    text-decoration: none;
+    background: #3498db;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-action.delete {
+    background: #e74c3c;
+}
+
+/* ======================================== */
+/* TABELAS                                   */
+/* ======================================== */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background: #f4f4f4;
+}
+
+/* RESPONSIVIDADE ДО TAВELA */
+.table-container {
+    overflow-x: auto;
+}
+
+
+/* ======================================== */
+/* FORMULÁRIOS                               */
+/* ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    margin-bottom: 12px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ======================================== */
+/* RESPONSIVIDADE GERAL                      */
+/* ======================================== */
+
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sidebar ul li a {
+        font-size: 18px;
+    }
+
+    main {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Ajusta sidebar para tipo dropdown */
+    .sidebar {
+        position: relative;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .btn-primary {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}

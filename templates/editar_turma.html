@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Editar Turma</title>
+</head>
+<body>
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/turmas">Voltar</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+        <h1>Editar Turma</h1>
+
+        <form class="card" method="POST">
+            <input name="nome" value="{{ turma.nome }}" required>
+            <input name="alunos" type="number" value="{{ turma.alunos }}" required>
+            <button class="btn-primary">Salvar</button>
+        </form>
+
+        <a class="btn-action delete" href="/turmas/excluir/{{ turma.id }}">
+            Excluir Turma
+        </a>
+    </main>
+
+</div>
+</body>
+</html>

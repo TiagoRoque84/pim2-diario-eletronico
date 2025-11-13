@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Avaliações</title>
+</head>
+<body>
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/turmas">← Turmas</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Avaliações da Turma: {{ turma.nome }}</h1>
+
+        <form class="card" method="POST" action="/turmas/{{ turma.id }}/avaliacoes/criar">
+            <input name="nome" placeholder="Nome da avaliação (ex: Prova 1)" required>
+            <button class="btn-primary">Adicionar</button>
+        </form>
+
+        <table class="data-table">
+            <tr>
+                <th>Avaliação</th>
+                <th>Ações</th>
+            </tr>
+
+            {% for a in avaliacoes %}
+            <tr>
+                <td>{{ a.nome }}</td>
+                <td>
+                    <a class="btn-action" href="/avaliacoes/{{ a.id }}/notas">📝 Lançar Notas</a>
+                    <a class="btn-action delete" href="/avaliacoes/excluir/{{ a.id }}">🗑 Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </main>
+</div>
+</body>
+</html>

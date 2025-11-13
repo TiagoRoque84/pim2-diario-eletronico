@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Turmas</title>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>Menu</h2>
+<a href="/">Dashboard</a>
+<a href="/logout">Sair</a>
+</aside>
+<main>
+<h1>Turmas</h1>
+
+<form class="card" method="POST" action="/turmas/criar">
+<input name="nome" placeholder="Nome" required>
+<input name="alunos" type="number" placeholder="Alunos" required>
+<button class="btn-primary">Cadastrar</button>
+</form>
+
+<table class="data-table">
+<tr><th>Nome</th><th>Alunos</th><th>Ações</th></tr>
+{% for t in turmas %}
+<tr>
+<td>{{ t.nome }}</td>
+<td>{{ t.alunos }}</td>
+<td><a class="btn-action" href="/turmas/{{ t.id }}/diario">Ver Diário</a></td>
+</tr>
+{% endfor %}
+</table>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Professor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/professores">← Voltar</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Editar Professor</h1>
+
+        <form class="card" method="POST">
+
+            <input name="nome" value="{{ professor.nome }}" required>
+            <input name="email" value="{{ professor.email }}" required>
+            <input name="senha" value="{{ professor.senha }}" required>
+
+            <button class="btn-primary">Salvar</button>
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

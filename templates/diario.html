@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Diário</title>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <a href="/turmas">Voltar</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+        <h1>Diário da Turma: {{ turma.nome }}</h1>
+
+        <form class="card" method="POST" action="/diario/add/{{ turma.id }}">
+            <input type="date" name="data" required>
+            <textarea name="conteudo" placeholder="Conteúdo da aula" required></textarea>
+            <button class="btn-primary">Adicionar</button>
+        </form>
+
+        <ul>
+            {% for r in registros %}
+            <li><strong>{{ r.data }}</strong> — {{ r.conteudo }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</div>
+</body>
+</html>

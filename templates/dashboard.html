@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h2>Menu</h2>
+
+        <ul>
+            <li><a href="/turmas">📚 Minhas Turmas</a></li>
+
+            {% if tipo == 'admin' %}
+            <li><a href="/professores">👨‍🏫 Professores</a></li>
+            {% endif %}
+
+            <li><a href="/logout">🚪 Sair</a></li>
+        </ul>
+
+    </aside>
+
+    <main>
+        <h1>Bem-vindo, {{ usuario }}</h1>
+    </main>
+
+</div>
+
+</body>
+</html>

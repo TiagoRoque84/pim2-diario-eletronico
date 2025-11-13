@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Turmas</title>
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>Menu</h2>
+        <a href="/">🏠 Dashboard</a>
+        <a href="/logout">🚪 Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Turmas</h1>
+
+        <!-- Formulário de criação -->
+        <form class="card" method="POST" action="/turmas/criar">
+            <input name="nome" placeholder="Nome da turma" required>
+            <input name="alunos" type="number" placeholder="Número de alunos" required>
+            <button class="btn-primary">Cadastrar Turma</button>
+        </form>
+
+        <!-- Tabela de Turmas -->
+        <table class="data-table">
+            <tr>
+                <th>Nome</th>
+                <th>Alunos</th>
+                <th>Ações</th>
+            </tr>
+
+            {% for t in turmas %}
+            <tr>
+                <td>{{ t.nome }}</td>
+                <td>{{ t.alunos }}</td>
+                <td>
+
+                    <!-- Diário -->
+                    <a class="btn-action" href="/turmas/{{ t.id }}/diario">
+                        📘 Diário
+                    </a>
+
+                    <!-- Alunos -->
+                    <a class="btn-action" href="/turmas/{{ t.id }}/alunos">
+                        👥 Alunos
+                    </a>
+                    <!-- Avaliações -->
+                    <a class="btn-action" href="/turmas/{{ t.id }}/avaliacoes">
+                        📝 Avaliações
+                    </a>
+
+
+                    <!-- Editar -->
+                    <a class="btn-action" href="/turmas/editar/{{ t.id }}">
+                        ✏ Editar
+                    </a>
+
+                    <!-- Excluir -->
+                    <a class="btn-action delete" href="/turmas/excluir/{{ t.id }}">
+                        🗑 Excluir
+                    </a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

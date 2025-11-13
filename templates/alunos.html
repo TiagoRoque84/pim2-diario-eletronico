@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Alunos</title>
+</head>
+<body>
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/turmas">← Voltar</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Alunos da Turma: {{ turma.nome }}</h1>
+
+        <form class="card" method="POST" action="/turmas/{{ turma.id }}/alunos/criar">
+            <input name="nome" placeholder="Nome do aluno" required>
+            <input name="ra" placeholder="RA" required>
+            <input name="email" placeholder="E-mail (opcional)">
+            <button class="btn-primary">Adicionar Aluno</button>
+        </form>
+
+        <table class="data-table">
+            <tr>
+                <th>Nome</th>
+                <th>RA</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+
+            {% for a in alunos %}
+            <tr>
+                <td>{{ a.nome }}</td>
+                <td>{{ a.ra }}</td>
+                <td>{{ a.email }}</td>
+                <td>
+                    <a class="btn-action" href="/alunos/editar/{{ a.id }}">Editar</a>
+                    <a class="btn-action delete" href="/alunos/excluir/{{ a.id }}">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </main>
+</div>
+</body>
+</html>

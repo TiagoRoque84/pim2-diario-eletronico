@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/static/styles.css">
+<title>Notas – {{ avaliacao.nome }}</title>
+
+<script>
+function toggleSub(id) {
+    const aus = document.getElementById("aus_" + id);
+    const sub = document.getElementById("sub_" + id);
+
+    if (aus.checked) {
+        sub.style.display = "inline-block";
+    } else {
+        sub.style.display = "none";
+        sub.value = "";
+    }
+}
+</script>
+
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <a href="/turmas/{{ avaliacao.turma_id }}/avaliacoes">← Avaliações</a>
+        <a href="/logout">Sair</a>
+    </aside>
+
+    <main>
+
+        <h1>Notas – {{ avaliacao.nome }}</h1>
+
+        <form method="POST" action="/avaliacoes/{{ avaliacao.id }}/notas/salvar" class="card">
+
+            <table class="data-table">
+                <tr>
+                    <th>Aluno</th>
+                    <th>RA</th>
+                    <th>Nota</th>
+                    <th>AUS</th>
+                    <th>SUB</th>
+                </tr>
+
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.ra }}</td>
+
+                    <!-- Nota -->
+                    <td>
+                        <input 
+                            type="number" 
+                            name="nota_{{ aluno.id }}" 
+                            step="0.1" 
+                            min="0" 
+                            max="10"
+                            value="{% if notas.get(aluno.id) and notas.get(aluno.id).nota is not none %}{{ notas.get(aluno.id).nota }}{% endif %}">
+                    </td>
+
+                    <!-- AUSENTE -->
+                    <td>
+                        <input 
+                            type="checkbox" 
+                            name="ausente_{{ aluno.id }}" 
+                            id="aus_{{ aluno.id }}"
+                            onclick="toggleSub({{ aluno.id }})"
+                            {% if notas.get(aluno.id) and notas.get(aluno.id).ausente == 1 %}checked{% endif %}>
+                    </td>
+
+                    <!-- SUBSTITUTIVA -->
+                    <td>
+                        <input
+                            type="number"
+                            step="0.1"
+                            min="0" 
+                            max="10"
+                            name="sub_{{ aluno.id }}"
+                            id="sub_{{ aluno.id }}"
+                            value="{% if notas.get(aluno.id) and notas.get(aluno.id).substitutiva is not none %}{{ notas.get(aluno.id).substitutiva }}{% endif %}"
+                            style="display: {% if notas.get(aluno.id) and notas.get(aluno.id).ausente == 1 %}inline-block{% else %}none{% endif %};">
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+
+            <button class="btn-primary">Salvar Notas</button>
+
+        </form>
+
+    </main>
+</div>
+
+</body>
+</html>
