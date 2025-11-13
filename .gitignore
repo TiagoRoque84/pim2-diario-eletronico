@@ -1,0 +1,27 @@
+# Arquivos do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Banco de dados local
+pim2.db
+backup.db
+
+# Ambiente virtual (caso exista)
+venv/
+env/
+
+# Arquivos temporários
+*.log
+*.tmp
+*.cache
+
+# Configurações de editor
+.vscode/
+.idea/
+*.swp
+
+# Arquivos de sistema
+Thumbs.db
+.DS_Store
